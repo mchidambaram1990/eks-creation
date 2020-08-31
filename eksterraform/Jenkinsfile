@@ -12,7 +12,7 @@ pipeline {
   stages {
     stage('checkout') {
         steps {
-            git 'https://github.com/mchidambaram1990/vpc_creation.git'
+            git 'https://github.com/mchidambaram1990/eks-creation.git'
         }
     }
 	stage('Setup') {
