@@ -1,11 +1,4 @@
-#
-# VPC Resources
-#  * VPC
-#  * Subnets
-#  * Internet Gateway
-#  * Route Table
-#
-
+# Created VPC
 resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
 
@@ -15,6 +8,7 @@ resource "aws_vpc" "main" {
   )
 }
 
+# Created subnet
 resource "aws_subnet" "subnet_main" {
   count = 2
 
@@ -29,6 +23,7 @@ resource "aws_subnet" "subnet_main" {
   )
 }
 
+# Created Internet_Gateway
 resource "aws_internet_gateway" "ig_main" {
   vpc_id = aws_vpc.main.id
 
@@ -37,6 +32,7 @@ resource "aws_internet_gateway" "ig_main" {
   }
 }
 
+# Created Route Table
 resource "aws_route_table" "rt_main" {
   vpc_id = aws_vpc.main.id
 
@@ -46,6 +42,7 @@ resource "aws_route_table" "rt_main" {
   }
 }
 
+# Created Route Table Association
 resource "aws_route_table_association" "rt_routeTable_association" {
   count = 2
 

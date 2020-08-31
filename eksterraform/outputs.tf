@@ -1,6 +1,6 @@
-#
-# Outputs
-#
+
+# Outputs for CONFIGMAPAWSAUTH and KUBECONFIG
+
 
 locals {
   config_map_aws_auth = <<CONFIGMAPAWSAUTH

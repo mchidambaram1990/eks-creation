@@ -1,9 +1,7 @@
 #
 # EKS Cluster Resources
-#  * IAM Role to allow EKS service to manage other AWS services
-#  * EC2 Security Group to allow networking traffic with EKS cluster
-#  * EKS Cluster
-#
+
+# Created IAM role for EKS Cluster
 
 resource "aws_iam_role" "role_cluster" {
   name = "terraform-eks-cluster"
@@ -24,16 +22,21 @@ resource "aws_iam_role" "role_cluster" {
 POLICY
 }
 
+# Created EKS Cluster Policy
+
 resource "aws_iam_role_policy_attachment" "cluster-AmazonEKSClusterPolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
   role       = aws_iam_role.role_cluster.name
 }
+
+#Created EKS Service Policy
 
 resource "aws_iam_role_policy_attachment" "cluster-AmazonEKSServicePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
   role       = aws_iam_role.role_cluster.name
 }
 
+# Created Security Group for the EKS cluster
 resource "aws_security_group" "sg_cluster" {
   name        = "terraform-eks-cluster"
   description = "Cluster communication with worker nodes"
@@ -60,6 +63,8 @@ resource "aws_security_group_rule" "cluster-ingress-workstation-https" {
   to_port           = 443
   type              = "ingress"
 }
+
+# Created EKS Cluster Resource
 
 resource "aws_eks_cluster" "eks-cluster" {
   name     = var.cluster-name
