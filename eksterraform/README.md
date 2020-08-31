@@ -1,7 +1,6 @@
-# EKS Getting Started Guide Configuration
-
-This is the full configuration from https://www.terraform.io/docs/providers/aws/guides/eks-getting-started.html
-
-See that guide for additional information.
-
-NOTE: This full configuration utilizes the [Terraform http provider](https://www.terraform.io/docs/providers/http/index.html) to call out to icanhazip.com to determine your local workstation external IP for easily configuring EC2 Security Group access to the Kubernetes master servers. Feel free to replace this as necessary.
+EKS STEPS TO CREATE THROUGH TERRAFORM:
+     1. Created the VPC, Subnet, Route table, Internet Gateway in vpc.tf file
+     2. Created the Variables in variable.tf file
+     3. Created the provider AWS in provider.tf file
+     4. Created the EKS Cluster resources, EKS Cluster IAM role, EKS policies, EKS security group in eks-cluster.tf file
+     5. Created the EKS worker node resources, Worker node IAM role and EKS Worker node policies in eks-worker-nodes.tf file.
