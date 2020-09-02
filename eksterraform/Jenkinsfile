@@ -15,6 +15,14 @@ pipeline {
             git 'https://github.com/mchidambaram1990/eks-creation.git'
         }
     }
+    stage('Setup') {
+	steps {
+	        script {
+			currentBuild.displayName = "#" + env.BUILD_NUMBER + " " + params.action + " eks-" + params.cluster
+			plan = params.cluster + '.plan'
+		       }
+	}
+    }
 	
     
     stage('TF Plan') {
