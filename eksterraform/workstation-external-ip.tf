@@ -1,5 +1,4 @@
 # Workstation External IP
-#the external IP of your local workstation to configure inbound EC2 Security Group access to the Kubernetes cluster.
 
 data "http" "workstation-external-ip" {
   url = "http://ipv4.icanhazip.com"
