@@ -49,7 +49,7 @@ resource "aws_security_group" "sg_cluster" {
   }
 
   tags = {
-    Name = "terraform-eks-demo"
+    Name = "terraform-eks-sg"
   }
 }
 
