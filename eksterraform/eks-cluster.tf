@@ -1,4 +1,3 @@
-#
 # EKS Cluster Resources
 
 # Created IAM role for EKS Cluster
